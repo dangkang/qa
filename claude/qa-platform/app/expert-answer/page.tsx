@@ -10,7 +10,7 @@ import Link from "next/link";
 const timelineSteps = [
   { label: "質問送信" },
   { label: "AI下書き生成" },
-  { label: "専門家確認・編集" },
+  { label: "宅建士確認・編集" },
   { label: "回答完了" },
 ];
 
@@ -27,7 +27,7 @@ function ExpertAnswerContent() {
   useEffect(() => {
     if (isAuto) {
       const timer = setTimeout(() => {
-        router.push("/expert-dashboard?auto=true");
+        router.push("/lawyer-search?auto=true");
       }, 10000);
       return () => clearTimeout(timer);
     }
@@ -71,14 +71,14 @@ function ExpertAnswerContent() {
                   田
                 </div>
                 <div>
-                  <p className="font-bold text-dark">田中 太郎</p>
+                  <p className="font-bold text-dark">回答者：田中 太郎</p>
                   <p className="text-xs text-text-light">
                     宅地建物取引士 / 回答日：2025年7月15日
                   </p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/10 text-accent text-sm font-medium rounded-full">
-                ✓ 専門家が確認済み
+                ✓ 宅建士が確認済み
               </span>
             </div>
 
@@ -91,7 +91,7 @@ function ExpertAnswerContent() {
               >
                 <h3 className="text-lg font-bold text-dark mb-3">結論</h3>
                 <p className="text-text leading-relaxed text-[15px] mb-6">
-                  6年間居住後のクリーニング特約3万円の請求は、争う余地があります。
+                  6年間居住後のクリーニング費用3万円については、交渉で減額できる可能性が高いです。以下、実務的な交渉ポイントをお伝えします。
                 </p>
               </motion.div>
 
@@ -146,9 +146,25 @@ function ExpertAnswerContent() {
                 <h3 className="text-base font-bold text-dark mb-3">
                   推奨アクション
                 </h3>
-                <p className="text-text leading-relaxed text-[15px]">
-                  まず契約書の特約条項を確認し、具体的な範囲と金額が明記されているか確認してください。記載が曖昧な場合は、特約の有効性を主張して書面交渉が可能です。交渉が難航する場合は、消費生活センター（188番）への相談をお勧めします。
+                <ol className="text-text leading-relaxed text-[15px] space-y-2 list-decimal list-inside">
+                  <li>契約書の特約条項を確認し、具体的な範囲と金額の記載があるか確認</li>
+                  <li>東京都の「賃貸住宅紛争防止条例」の説明書面を受け取っているか確認</li>
+                  <li>上記を踏まえ、大家または管理会社に書面で減額交渉を申し入れ</li>
+                </ol>
+                <p className="text-text leading-relaxed text-[15px] mt-4">
+                  💡 交渉が難航する場合は、消費生活センター（188番）への相談をお勧めします。
                 </p>
+                <div className="mt-3 pt-3 border-t border-secondary/20">
+                  <p className="text-sm text-text-light">
+                    ⚖️ 特約の法的有効性や損害賠償請求の可否など、法的判断が必要な場合は弁護士にご相談ください
+                  </p>
+                  <Link
+                    href={`/lawyer-search${isAuto ? "?auto=true" : ""}`}
+                    className="inline-block mt-2 text-sm text-secondary hover:underline font-medium"
+                  >
+                    不動産に強い弁護士を探す →
+                  </Link>
+                </div>
               </motion.div>
             </div>
 
@@ -171,7 +187,7 @@ function ExpertAnswerContent() {
                 href={`/expert-dashboard${isAuto ? "?auto=true" : ""}`}
                 className="text-sm text-secondary hover:underline"
               >
-                専門家ダッシュボード（裏側を見る） →
+                宅建士ダッシュボード（裏側を見る） →
               </Link>
             </motion.div>
           </motion.div>

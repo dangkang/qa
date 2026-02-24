@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 interface PricingFeature {
   label: string;
-  included: boolean;
+  included: boolean | string;
 }
 
 interface PricingCardProps {
@@ -65,7 +65,15 @@ export default function PricingCard({
       <ul className="space-y-3 flex-1 mb-6">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center gap-2 text-sm">
-            {feature.included ? (
+            {typeof feature.included === "string" ? (
+              <span
+                className={`text-xs ${
+                  highlighted ? "text-white/70" : "text-text-light"
+                }`}
+              >
+                {feature.included}
+              </span>
+            ) : feature.included ? (
               <span
                 className={`text-base ${
                   highlighted ? "text-accent" : "text-accent"
@@ -84,7 +92,11 @@ export default function PricingCard({
             )}
             <span
               className={
-                feature.included
+                typeof feature.included === "string"
+                  ? highlighted
+                    ? "text-white/70"
+                    : "text-text-light"
+                  : feature.included
                   ? ""
                   : highlighted
                   ? "text-white/40"

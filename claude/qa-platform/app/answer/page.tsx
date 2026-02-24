@@ -63,7 +63,7 @@ const answerSections = [
   {
     type: "warning" as const,
     content:
-      "この回答はAIが法規・判例データベースから自動生成したものです。個別の契約内容や地域の慣行により異なる場合があります。より詳しい相談は「専門家に質問する」をご利用ください。",
+      "この回答はAIが法規・判例データベースから自動生成した一般的な法律情報です。個別の契約内容や地域の慣行により異なる場合があります。",
   },
 ];
 
@@ -97,7 +97,8 @@ function AnswerContent() {
       }, 15000);
       return () => clearTimeout(timer);
     }
-  }, [isAuto, router]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuto]);
 
   return (
     <div className="min-h-screen bg-light-bg">
@@ -199,23 +200,37 @@ function AnswerContent() {
               </ul>
             </motion.div>
 
-            {/* Expert CTA */}
+            {/* CTA: Two-layer model */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 1.6 }}
-              className="bg-primary rounded-xl p-5 text-white"
+              className="space-y-3"
             >
-              <p className="font-bold mb-2">より詳しく専門家に相談</p>
-              <p className="text-sm text-white/80 mb-4">
-                個別の契約内容に基づいた専門家のアドバイスを受けられます
-              </p>
-              <Link
-                href={`/expert-ask${isAuto ? "?auto=true" : ""}`}
-                className="block w-full py-2.5 bg-white text-primary rounded-lg text-sm font-medium text-center hover:bg-white/90 transition-colors"
-              >
-                専門家に質問する →
-              </Link>
+              <div className="bg-accent/5 border-2 border-accent/30 rounded-xl p-5">
+                <p className="font-bold text-dark mb-1 text-sm">🏠 不動産取引の実務相談</p>
+                <p className="text-xs text-text-light mb-3">
+                  原状回復の相場感や交渉の進め方など、宅建士が実務的にアドバイス
+                </p>
+                <Link
+                  href={`/expert-ask${isAuto ? "?auto=true" : ""}`}
+                  className="block w-full py-2.5 bg-accent text-white rounded-lg text-sm font-medium text-center hover:bg-accent/90 transition-colors"
+                >
+                  宅建士に質問する（¥500〜3,000）
+                </Link>
+              </div>
+              <div className="bg-white border-2 border-gray-200 rounded-xl p-5">
+                <p className="font-bold text-dark mb-1 text-sm">⚖️ 法的判断が必要な場合</p>
+                <p className="text-xs text-text-light mb-3">
+                  契約条項の有効性や損害賠償など、弁護士に直接ご相談ください
+                </p>
+                <Link
+                  href={`/lawyer-search${isAuto ? "?auto=true" : ""}`}
+                  className="block w-full py-2.5 bg-white text-dark border-2 border-gray-300 rounded-lg text-sm font-medium text-center hover:border-primary hover:text-primary transition-colors"
+                >
+                  不動産に強い弁護士を探す →
+                </Link>
+              </div>
             </motion.div>
 
             {/* Citations */}

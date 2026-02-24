@@ -15,8 +15,9 @@ const plans = [
     features: [
       { label: "Q&A閲覧・検索", included: true },
       { label: "AI即時回答", included: false },
-      { label: "質問投稿", included: false },
-      { label: "専門家回答", included: false },
+      { label: "宅建士回答", included: false },
+      { label: "弁護士検索", included: false },
+      { label: "弁護士直接相談", included: false },
     ],
   },
   {
@@ -28,21 +29,37 @@ const plans = [
     features: [
       { label: "Q&A閲覧・検索", included: true },
       { label: "AI即時回答", included: true },
-      { label: "質問投稿", included: true },
-      { label: "専門家回答", included: false },
+      { label: "宅建士回答", included: false },
+      { label: "弁護士検索", included: true },
+      { label: "弁護士直接相談", included: false },
     ],
   },
   {
-    name: "プロ相談",
-    price: "¥500〜5,000",
+    name: "宅建士相談",
+    price: "¥500〜3,000",
     priceUnit: "/質問",
-    ctaLabel: "専門家に相談する",
+    ctaLabel: "宅建士に相談する",
     highlighted: false,
     features: [
       { label: "Q&A閲覧・検索", included: true },
       { label: "AI即時回答", included: true },
-      { label: "質問投稿", included: true },
-      { label: "専門家回答", included: true },
+      { label: "宅建士回答", included: true },
+      { label: "弁護士検索", included: true },
+      { label: "弁護士直接相談", included: false },
+    ],
+  },
+  {
+    name: "弁護士を探す",
+    price: "掲載料制",
+    priceUnit: "",
+    ctaLabel: "弁護士を検索する",
+    highlighted: false,
+    features: [
+      { label: "Q&A閲覧・検索", included: true },
+      { label: "AI即時回答", included: true },
+      { label: "宅建士回答", included: "—" },
+      { label: "弁護士検索", included: "—" },
+      { label: "弁護士直接相談", included: "弁護士と直接契約" },
     ],
   },
 ];
@@ -52,7 +69,7 @@ function PricingContent() {
     <div className="min-h-screen bg-light-bg">
       <Header />
 
-      <div className="max-w-5xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,7 +83,7 @@ function PricingContent() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-4 gap-5 mb-12">
           {plans.map((plan, i) => (
             <PricingCard
               key={plan.name}
@@ -85,12 +102,12 @@ function PricingContent() {
         >
           <p className="text-text-light text-sm mb-2">コスト比較</p>
           <p className="text-xl font-bold text-dark mb-4">
-            弁護士相談（1時間5,000〜10,000円）の
-            <span className="text-primary">1/10以下</span>
+            弁護士相談（1時間5,000〜10,000円）と比べ、
+            <span className="text-primary">宅建士相談なら¥500〜3,000</span>
+            で解決
           </p>
-          <p className="text-text-light text-sm max-w-lg mx-auto">
-            法規・判例データベースに基づくAI回答で多くの疑問を即座に解決。
-            複雑な案件のみ専門家に相談することで、コストを大幅に削減できます。
+          <p className="text-text-light text-sm max-w-xl mx-auto">
+            不動産実務の一般的な質問なら宅建士相談で解決。法的判断が必要な場合も、当プラットフォームから不動産に強い弁護士を簡単に見つけられます。
           </p>
         </motion.div>
 

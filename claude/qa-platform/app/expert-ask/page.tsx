@@ -16,11 +16,11 @@ const experts = [
     avatarColor: "bg-primary",
   },
   {
-    name: "佐藤 花子",
-    title: "弁護士（不動産専門）",
-    experience: "15年経験",
-    rating: 4.9,
-    reviews: 89,
+    name: "鈴木 一郎",
+    title: "宅地建物取引士",
+    experience: "8年経験",
+    rating: 4.7,
+    reviews: 95,
     avatarColor: "bg-dark",
   },
 ];
@@ -58,10 +58,10 @@ function ExpertAskContent() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-2xl font-bold text-dark mb-2">
-            専門家に相談する
+            宅建士に相談する
           </h1>
           <p className="text-text-light mb-8">
-            AI回答に加え、資格を持つ専門家が個別に確認・回答します
+            AI回答に加え、宅地建物取引士が実務経験に基づいて個別に回答します
           </p>
         </motion.div>
 
@@ -79,7 +79,7 @@ function ExpertAskContent() {
                 質問内容
               </label>
               <div className="w-full p-4 bg-light-bg rounded-lg text-sm text-text leading-relaxed border border-gray-200">
-                上記の敷金返還について、契約書にはクリーニング特約があります。退去時にクリーニング代3万円を請求されていますが、6年住んでいた場合、この特約は有効でしょうか？
+                退去時のクリーニング特約について、6年住んでいた場合の原状回復費用の相場感と、大家との交渉の進め方を教えてください。
               </div>
             </motion.div>
 
@@ -147,16 +147,16 @@ function ExpertAskContent() {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full">
-                    <span>🟠</span> AI判定：個別判断が必要な質問
+                    📊 AI判定：実務経験が必要な質問 → 宅建士が対応
                   </span>
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-text-light">推定費用</p>
                   <p className="text-lg font-bold text-dark">
-                    ¥2,000〜¥3,000
+                    ¥1,000〜¥2,000
                   </p>
                   <p className="text-xs text-text-light">
-                    専門家の確認・編集付き
+                    宅建士の確認・編集付き
                   </p>
                 </div>
               </div>
@@ -171,7 +171,7 @@ function ExpertAskContent() {
               transition={{ duration: 0.4, delay: 0.5 }}
               className="text-sm font-medium text-dark"
             >
-              対応可能な専門家
+              対応可能な宅建士
             </motion.p>
             {experts.map((expert, i) => (
               <ExpertCard
@@ -200,7 +200,7 @@ function ExpertAskContent() {
                     送信中...
                   </span>
                 ) : (
-                  "質問を送信する（¥2,000）"
+                  "質問を送信する（¥1,500）"
                 )}
               </button>
             </motion.div>
@@ -212,7 +212,7 @@ function ExpertAskContent() {
                 className="text-center"
               >
                 <p className="text-sm text-secondary font-medium">
-                  質問を送信しました。AIが下書きを生成し、専門家が確認中です...
+                  質問を送信しました。AIが下書きを生成し、宅建士が確認中です...
                 </p>
               </motion.div>
             )}

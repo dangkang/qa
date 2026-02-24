@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 
 const sidebarItems = [
-  { label: "未対応", count: 3, color: "bg-warning" },
+  { label: "割り当て質問", count: 3, color: "bg-warning" },
   { label: "対応中", count: 1, color: "bg-secondary" },
   { label: "完了", count: 24, color: "bg-accent" },
 ];
@@ -38,7 +38,7 @@ function ExpertDashboardContent() {
           className="mb-6"
         >
           <h1 className="text-2xl font-bold text-dark">
-            専門家ダッシュボード
+            宅建士ダッシュボード
           </h1>
           <p className="text-text-light text-sm mt-1">
             田中 太郎（宅地建物取引士）
@@ -89,11 +89,11 @@ function ExpertDashboardContent() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-text-light">平均評価</span>
-                  <span className="font-medium text-gold">★ 4.8</span>
+                  <span className="font-medium text-gold">★ 4.6</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-text-light">報酬</span>
-                  <span className="font-medium text-dark">¥28,500</span>
+                  <span className="text-text-light">収入</span>
+                  <span className="font-medium text-dark">¥19,800</span>
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@ function ExpertDashboardContent() {
 
               <div className="bg-light-bg rounded-lg p-4 mb-4">
                 <p className="text-sm text-text leading-relaxed">
-                  上記の敷金返還について、契約書にはクリーニング特約があります。退去時にクリーニング代3万円を請求されていますが、6年住んでいた場合、この特約は有効でしょうか？
+                  退去時のクリーニング特約について、6年住んでいた場合の原状回復費用の相場感と、大家との交渉の進め方を教えてください。
                 </p>
               </div>
 
@@ -165,7 +165,7 @@ function ExpertDashboardContent() {
                 <span className="w-6 h-6 bg-accent/10 rounded flex items-center justify-center text-xs text-accent">
                   A
                 </span>
-                AI下書き ＋ 専門家編集
+                AI下書き ＋ 宅建士編集
               </h3>
 
               <div className="space-y-3 text-sm leading-relaxed">
